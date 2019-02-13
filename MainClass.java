@@ -1,24 +1,34 @@
 import java.util.Scanner;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class MainClass 
 {
-	public static void main(String[] args)
+	static String parseFile(String fileName, String searchStr)
 	{
-		//Declare variables and objects
-		Scanner scnr = new Scanner(System.in);
-		String userName = ""; String password = ""; String hash = "";
+		String text = "";
+		try
+		{
+			Scanner scnr = new Scanner(new File(fileName));
+			while(scnr.hasNextLine())
+			{
+				text = text + scnr.next() + " ";
+			}
+			scnr.close();
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("file not found");
+		}
 		
-		//input
-		System.out.println("Please enter username: ");
-		userName = scnr.nextLine();
-		System.out.println("Please enter password: ");
-		password = scnr.nextLine();
-		scnr.close();
-		/* ---------------------------------------------------------------------------*/
-		
+		return text;
+	}
+	static String hashString(String str)
+	{
 		//MD5 section 
-		String original = password;  //Replace "password" with the actual password inputted by the user
+		String original = str;  //Replace "password" with the actual password inputted by the user
 		MessageDigest md = null;
 		try 
 		{
@@ -31,14 +41,36 @@ public class MainClass
 		}
 		md.update(original.getBytes());
 		byte[] digest = md.digest();
-      StringBuffer sb = new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		for (byte b : digest) 
 		{
 			sb.append(String.format("%02x", b & 0xff));
 		}
 		
-		System.out.println("Original : " + original);
-		System.out.println("Digested: " + sb.toString());
+		return sb.toString();
+	}
+	
+	public static void main(String[] args)
+	{
+		//Declare variables and objects
+		Scanner scnr = new Scanner(System.in);
+		String userName = ""; String password = ""; //String hashOnFile = "";
+		String newHash = ""; String source = "D:\\documents\\SNHU ClassFiles\\IT-145-R3992 19EW3\\Final Project Authentication System\\credentials\\credentials.txt"; 
+		
+		//input
+		System.out.println("Please enter username: ");
+		userName = scnr.nextLine();
+		System.out.println("Please enter password: ");
+		password = scnr.nextLine();
+		scnr.close();
+		/* ---------------------------------------------------------------------------*/
+		newHash = hashString(password);
+		System.out.println("Original : " + password); //debugging
+		System.out.println("Digested: " + newHash); // debugging
+		
+		//test two hash strings
+		String content =parseFile(source, newHash); //inputs the source file that hold credentials and inputs the hash file from hashString()
+		System.out.println(content); //debugging
 		
 		return;
 	}
