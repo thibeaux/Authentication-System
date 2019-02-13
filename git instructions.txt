@@ -1,0 +1,6 @@
+go to this address: "d/documents/SNHU ClassFiles/IT-145-R3992 19EW3/Final Project Authentication System"
+origin is your remote address name 
+
+to update the repository use this command which uploads all folders to the repository:
+> git push -u origin master
+
