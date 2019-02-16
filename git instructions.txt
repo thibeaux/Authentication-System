@@ -4,3 +4,37 @@ origin is your remote address name
 to update the repository use this command which uploads all folders to the repository:
 > git push -u origin master
 
+REMOTE REPO
+good source use this URL http://rogerdudler.github.io/git-guide/
+to update repository by sing files use this" 
+> git add <fileName>
+> git commit -m "message"
+> git push origin master
+
+
+BRANCHES
+To create a new branch and switch to it:
+> git checkout -b <name>
+
+switch back to master: 
+> git chekout master
+
+Delete a branch:
+> git branch -d <name>
+
+
+LOCAL REPO
+push branch from you local repo to your remote repository:
+> git push origin <branch>
+
+update local repository with the neweset commit, do this in you working directoy to fetch and merge remote changes:
+> git pull
+
+to merge another branch into your active branch (e.g master) use: 
+> git merge <branch>
+
+After changing, you need to mark them as merged with:
+> git add <filename>
+To preview the changes use:
+> git diff <source_branch> <target_branch>
+
