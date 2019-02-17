@@ -1,7 +1,6 @@
 
 public class User1 extends UserClass
 {
-	//UserClass userClass ;
 	String userName; String hashcode;
 	boolean verify = false;
 	

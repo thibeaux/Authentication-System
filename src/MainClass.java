@@ -42,12 +42,19 @@ public class MainClass
 	
 	public static void main(String[] args) throws IOException
 	{
-		//Declare variables and objects
+		//Declaring Objects
 		User1 u1 = new User1();
+		User2 u2 = new User2();
+		User3 u3 = new User3();
+		User4 u4 = new User4();
+		User5 u5 = new User5();
+		User6 u6 = new User6();
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		Scanner scnr = new Scanner(System.in);
-		boolean verify1 = false;
+		//Declaring Variables
+		boolean verify1 = false; boolean verify2 = false; boolean verify3 = false;
+		boolean verify4 = false; boolean verify5 = false; boolean verify6 = false;
 		int attempts = 0;
 		String userName = ""; String password = ""; String[] fileContent = {}; String fileContentBuff="";
 		String newHash = ""; String source = "D:\\documents\\SNHU ClassFiles\\IT-145-R3992 19EW3\\Final Project Authentication System\\credentials\\credentials.txt"; 
@@ -97,15 +104,24 @@ public class MainClass
 			List<String[]> myList = new ArrayList<String[]>();
 			
 			String buffLine = fileContent[i];
-			String[] user1 = buffLine.split("\t"); i++;//creating 6 users to store new data from file
-			String[] user2 = buffLine.split("\t"); i++;
-			String[] user3 = buffLine.split("\t"); i++;
-			String[] user4 = buffLine.split("\t"); i++;
-			String[] user5 = buffLine.split("\t"); i++;
+			String[] user1 = buffLine.split("\t"); i++;buffLine = fileContent[i];//creating 6 users to store new data from file
+			String[] user2 = buffLine.split("\t"); i++;buffLine = fileContent[i];
+			String[] user3 = buffLine.split("\t"); i++;buffLine = fileContent[i];
+			String[] user4 = buffLine.split("\t"); i++;buffLine = fileContent[i];
+			String[] user5 = buffLine.split("\t"); i++;buffLine = fileContent[i];
 			String[] user6 = buffLine.split("\t"); i++;
 			
 			//Sort Strings from file to UserClass to interpret and verify information
 			verify1 = u1.userProfile(user1[0], user1[1], user1[2], user1[3],newHash,userName);//User1.java class
+			verify2 = u2.userProfile(user2[0], user2[1], user2[2], user2[3],newHash,userName);//User2.java class
+			verify3 = u3.userProfile(user3[0], user3[1], user3[2], user3[3],newHash,userName);//User3.java class
+			verify4 = u4.userProfile(user4[0], user4[1], user4[2], user4[3],newHash,userName);//User4.java class
+			verify5 = u5.userProfile(user5[0], user5[1], user5[2], user5[3],newHash,userName);//User5.java class
+			verify6 = u6.userProfile(user6[0], user6[1], user6[2], user6[3],newHash,userName);//User6.java class
+			//FIXME: Sort through all 6 users and see who was verified
+			//FIXME: Create a method in MainClass to determine what user has been verified out of the 6 users
+			
+		//System.out.println(user6[0].toString()); // debugging
 		}
 		else
 		{
@@ -114,8 +130,8 @@ public class MainClass
 			break;
 		}
 		}
-		//FIXME: Create a method in MainClass to determine what user has been verified out of the 6 users
-		//FIXME!: create a method in User1 class that displays users profile as described in the Final Rubric
+		//FIXME: Clean up code and make documents and more readable notes
+		//FIXME: create a method in User# classes that displays users profile as described in the Final Rubric
 		//this only happens if user enters credentials successfully within 3 tries.
 		scnr.close();
 		return;
