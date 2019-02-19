@@ -53,13 +53,14 @@ public class MainClass
 		PrintWriter pw = new PrintWriter(sw);
 		Scanner scnr = new Scanner(System.in);
 		//Declaring Variables
+		boolean whileVerify = false;
 		boolean verify1 = false; boolean verify2 = false; boolean verify3 = false;
 		boolean verify4 = false; boolean verify5 = false; boolean verify6 = false;
 		int attempts = 0;
 		String userName = ""; String password = ""; String[] fileContent = {}; String fileContentBuff="";
-		String newHash = ""; String source = "D:\\documents\\SNHU ClassFiles\\IT-145-R3992 19EW3\\Final Project Authentication System\\credentials\\credentials.txt"; 
+		String newHash = ""; String source = "credentials/credentials.txt"; 
 		/* ---------------------------------------------------------------------------------------------------------------------------------------------------------*/
-		while ((verify1 == false))
+		while (whileVerify == false)
 		{
 		attempts++;
 		if (attempts != 4)
@@ -75,7 +76,7 @@ public class MainClass
 			//System.out.println("Original : " + password); //debugging
 			//System.out.println("Digested: " + newHash); // debugging
 			
-			//open file 
+			//Open file 
 			//I was unable to find any sources to help me make a method that entirely handled the files opening, testing, and closing, so i put this in main.
 			int lineNum = 0;
 			try 
@@ -120,6 +121,47 @@ public class MainClass
 			verify6 = u6.userProfile(user6[0], user6[1], user6[2], user6[3],newHash,userName);//User6.java class
 			//FIXME: Sort through all 6 users and see who was verified
 			//FIXME: Create a method in MainClass to determine what user has been verified out of the 6 users
+			if (verify1 == true)
+			{
+				System.out.println("Password and user name match out records. Please proceed.");
+				whileVerify = true;
+				u1.getContent();
+			}
+			else if(verify2 == true)
+			{
+				System.out.println("Password and user name match out records. Please proceed.");
+				whileVerify = true;
+				u2.getContent();
+			}
+			else if(verify3 == true)
+			{
+				System.out.println("Password and user name match out records. Please proceed.");
+				whileVerify = true;
+				u3.getContent();
+			}
+			else if(verify4 == true)
+			{
+				System.out.println("Password and user name match out records. Please proceed.");
+				whileVerify = true;
+				u4.getContent();
+			}
+			else if(verify5 == true)
+			{
+				System.out.println("Password and user name match out records. Please proceed.");
+				whileVerify = true;
+				u5.getContent();
+			}
+			else if(verify6 == true)
+			{
+				System.out.println("Password and user name match out records. Please proceed.");
+				whileVerify = true;
+				u6.getContent();
+			}
+			else
+			{
+				System.out.println("Password and username does not match our records. Please try again.");
+				whileVerify = false;
+			}
 			
 		//System.out.println(user6[0].toString()); // debugging
 		}

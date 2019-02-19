@@ -1,16 +1,16 @@
 
 public class User3 extends UserClass
 {
-		String userName; String hashcode;
+		String userName; String hashcode; String role;
 		boolean verify = false;
 		
 		public boolean userProfile(String username, String hashcodeBuff, String password, String role,String newPass,String newUsername)
 		{
 			this.userName = username; 
 			this.hashcode = hashcodeBuff;
+			this.role = role;
 			
 			verify = auth(userName,hashcodeBuff,newPass, newUsername);
-			//System.out.println("\n"+hashcode + "\n" + verify);
 			
 			if (verify == true)
 			{
@@ -21,5 +21,9 @@ public class User3 extends UserClass
 				return false;
 			}
 		}
-		//FIXME: Create method that displays users content as described in Finals Rubric
+		
+		public void getContent()
+		{
+			setRole(role);
+		}
 }
